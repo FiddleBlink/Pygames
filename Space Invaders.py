@@ -94,7 +94,7 @@ def isCollision(alienx, alieny, bulletx, bullety):
 
 
 #title and icon
-pygame.display.set_caption("Space Invasion")
+pygame.display.set_caption("Space Invasion @ MitWpu")
 icon = pygame.image.load('pygametut/ufo.png')
 pygame.display.set_icon(icon)
 
