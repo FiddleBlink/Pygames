@@ -1,5 +1,4 @@
 import pygame
-from pygame.constants import SCRAP_SELECTION
 
 # Initialize the pygame library
 pygame.init()
@@ -15,6 +14,15 @@ playerx_change = 0
 
 def player (x,y) :
     screen.blit (playerimg,(x,y))
+
+# Alien
+alienimg = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/ufo1.png')
+alienx = 370
+alieny = 50
+alienx_change = 0
+
+def alien (x,y) :
+    screen.blit (alienimg,(x,y))
 
 #title and icon
 pygame.display.set_caption("Space Invasion")
@@ -39,5 +47,12 @@ while running:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT :
                 playerx_change = 0
     playerx += playerx_change
+
+    if playerx <= 0:
+        playerx = 0
+    elif playerx >= 736 :
+        playerx = 736
+    
     player (playerx,playery)
+    alien (alienx,alieny)
     pygame.display.update()
