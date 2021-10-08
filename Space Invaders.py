@@ -20,3 +20,4 @@ while running:
             running = False
 
     screen.fill((0, 0, 0))
+print("Hello parth how are you")
