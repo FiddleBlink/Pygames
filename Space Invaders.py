@@ -7,6 +7,9 @@ pygame.init()
 # create the display
 screen = pygame.display.set_mode((800, 600))
 
+# Background 
+background = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/back.jpeg')
+
 # Player
 playerimg = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/spaceship1.png')
 playerx = 370
@@ -36,6 +39,7 @@ running = True
 while running:
     # RGB
     screen.fill((0, 0, 0))
+    screen.blit(background,(0,0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -63,7 +67,7 @@ while running:
     elif alienx >= 736 :
         alienx_change = -0.3
         alieny += alieny_change
-        
+
     player (playerx,playery)
     alien (alienx,alieny)
     pygame.display.update()
