@@ -7,18 +7,28 @@ pygame.init()
 # create the display
 screen = pygame.display.set_mode((800, 600))
 
+# Player
+playerimg = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/spaceship1.png')
+playerx = 370
+playery = 480
+
+def player () :
+    screen.blit (playerimg,(playerx,playery))
+
 #title and icon
 pygame.display.set_caption("Space Invasion")
-icon = pygame.image.load('pygametut/ufo.png')
+icon = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/ufo.png')
 pygame.display.set_icon(icon)
 
 # game loop
 running = True
 while running:
+    # RGB
+    screen.fill((0, 0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    # RGB color scheme (0-255 range)
-    screen.fill((0, 0, 0))
+    
+    player ()
     pygame.display.update()
