@@ -19,4 +19,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    # RGB color scheme (0-255 range)
     screen.fill((0, 0, 0))
+    pygame.display.update()
