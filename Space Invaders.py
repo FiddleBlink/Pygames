@@ -57,10 +57,10 @@ while running:
     
     alienx += alienx_change
 
-    if playerx <= 0:
+    if alienx <= 0:
         alienx_change = 0.3
         alieny += alieny_change
-    elif playerx >= 736 :
+    elif alienx >= 736 :
         alienx_change = -0.3
         alieny += alieny_change
         
