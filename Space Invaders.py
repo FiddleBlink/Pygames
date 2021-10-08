@@ -11,9 +11,10 @@ screen = pygame.display.set_mode((800, 600))
 playerimg = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/spaceship1.png')
 playerx = 370
 playery = 480
+playerx_change = 0
 
-def player () :
-    screen.blit (playerimg,(playerx,playery))
+def player (x,y) :
+    screen.blit (playerimg,(x,y))
 
 #title and icon
 pygame.display.set_caption("Space Invasion")
@@ -29,6 +30,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    
-    player ()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT :
+                playerx_change = -0.5
+            if event.key == pygame.K_RIGHT :
+                playerx_change = 0.5
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT :
+                playerx_change = 0
+    playerx += playerx_change
+    player (playerx,playery)
     pygame.display.update()
