@@ -1,4 +1,5 @@
 import pygame
+import random
 
 # Initialize the pygame library
 pygame.init()
@@ -17,9 +18,10 @@ def player (x,y) :
 
 # Alien
 alienimg = pygame.image.load('/Users/akshatsinghal/Downloads/pygamestut/ufo1.png')
-alienx = 370
-alieny = 50
-alienx_change = 0
+alienx = random.randint(0,800)
+alieny = random.randint(50,150)
+alienx_change = 0.3
+alieny_change = 40
 
 def alien (x,y) :
     screen.blit (alienimg,(x,y))
@@ -53,6 +55,15 @@ while running:
     elif playerx >= 736 :
         playerx = 736
     
+    alienx += alienx_change
+
+    if playerx <= 0:
+        alienx_change = 0.3
+        alieny += alieny_change
+    elif playerx >= 736 :
+        alienx_change = -0.3
+        alieny += alieny_change
+        
     player (playerx,playery)
     alien (alienx,alieny)
     pygame.display.update()
