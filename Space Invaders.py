@@ -40,7 +40,7 @@ for i in range(no_of_aliens):
     alienimg.append(pygame.image.load('pygametut/ufo2.png'))
     alienx.append(random.randint(0, 735))
     alieny.append(random.randint(50, 150))
-    alienx_change.append(0.5)
+    alienx_change.append(0.3)
     alieny_change.append(40)
 
 
@@ -49,7 +49,8 @@ def alien(x, y, i):
 
 
 # Bullet
-bulletimg = pygame.image.load('pygametut/bullet.png')
+bullet = pygame.image.load('pygametut/bullet.png')
+bulletimg = pygame.transform.scale(bullet, (16, 16))
 bulletimg = pygame.transform.rotate(bulletimg, 45)
 bulletx = 0
 bullety = 480
@@ -101,9 +102,9 @@ def fire_bullet(x, y):
 
 
 def isCollision(alienx, alieny, bulletx, bullety):
-    distance = math.sqrt((math.pow(alienx-bulletx, 2)) +
-                         (math.pow(alieny-bullety, 2)))
-    if distance < 30:
+    distance = math.sqrt((math.pow(alienx-bulletx, 2)))
+    distance1 = math.sqrt((math.pow(alieny-bullety, 2)))
+    if distance < 36 and distance1 < 10:
         return True
     else:
         return False
@@ -139,6 +140,7 @@ while running:
                 if bullet_state == "ready":
                     # gets the current x cord of player
                     bulletx = playerx
+                    bullety = playery
                     fire_bullet(bulletx, bullety)
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
@@ -180,10 +182,10 @@ while running:
 
         alienx[i] += alienx_change[i]
         if alienx[i] <= 0:
-            alienx_change[i] = 0.5
+            alienx_change[i] = 0.3
             alieny[i] += alieny_change[i]
         elif alienx[i] >= 736:
-            alienx_change[i] = -0.5
+            alienx_change[i] = -0.3
             alieny[i] += alieny_change[i]
 
         # collision
@@ -200,7 +202,7 @@ while running:
 
     # Movement of Bullet
     if bullety <= 0:
-        bullety = 480
+        bullety = playery
         bullet_state = "ready"
 
     if bullet_state == "fire":
