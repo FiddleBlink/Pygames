@@ -23,6 +23,7 @@ playery = 480
 playerx_change = 0
 playery_change = 0
 
+
 def player(x, y):
     screen.blit(playerimg, (x, y))
 
@@ -36,7 +37,7 @@ alieny_change = []
 no_of_aliens = 5
 
 for i in range(no_of_aliens):
-    alienimg.append(pygame.image.load('pygametut/ufo1.png'))
+    alienimg.append(pygame.image.load('pygametut/ufo2.png'))
     alienx.append(random.randint(0, 735))
     alieny.append(random.randint(50, 150))
     alienx_change.append(0.5)
@@ -65,8 +66,11 @@ textx = 10
 texty = 10
 
 # Game over Text
-over_font = pygame.font.Font('/Users/akshatsinghal/Downloads/pygamestut/Margarine-Regular.ttf', 70)
-over_font1 = pygame.font.Font('/Users/akshatsinghal/Downloads/pygamestut/Margarine-Regular.ttf', 30)
+over_font = pygame.font.Font(
+    'pygametut/Margarine-Regular.ttf', 70)
+over_font1 = pygame.font.Font(
+    'pygametut/Margarine-Regular.ttf', 30)
+
 
 def show_score(x, y):
     score = font.render("Score :" + str(score_value), True, (255, 255, 255))
@@ -99,7 +103,7 @@ def fire_bullet(x, y):
 def isCollision(alienx, alieny, bulletx, bullety):
     distance = math.sqrt((math.pow(alienx-bulletx, 2)) +
                          (math.pow(alieny-bullety, 2)))
-    if distance < 25:
+    if distance < 30:
         return True
     else:
         return False
@@ -164,7 +168,7 @@ while running:
             playery = 2000
             game_over_text()
             break
-            
+
         collision = isCollision(alienx[i], alieny[i], playerx, playery)
         if collision:
             for j in range(no_of_aliens):
