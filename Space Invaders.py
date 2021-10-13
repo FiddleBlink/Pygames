@@ -149,6 +149,10 @@ while running:
         playerx = 0
     elif playerx >= 736:
         playerx = 736
+    elif playery >= 480:
+        playery = 480
+    elif playery <= 0:
+        playery = 0
 
     # movement of alien UFO
     for i in range(no_of_aliens):
