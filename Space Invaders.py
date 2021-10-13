@@ -21,7 +21,7 @@ playerimg = pygame.image.load('pygametut/spaceship1.png')
 playerx = 370
 playery = 480
 playerx_change = 0
-
+playery_change = 0
 
 def player(x, y):
     screen.blit(playerimg, (x, y))
