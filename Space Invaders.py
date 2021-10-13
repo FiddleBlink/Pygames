@@ -186,7 +186,7 @@ while running:
             score_value += 1
             print(score_value)
             alienx[i] = random.randint(0, 735)
-            alieny[i] = random.randint(50, 150)
+            alieny[i] = random.randint(50, 350)
 
         alien(alienx[i], alieny[i], i)
 
