@@ -65,8 +65,8 @@ textx = 10
 texty = 10
 
 # Game over Text
-over_font = pygame.font.Font('pygametut/Margarine-Regular.ttf', 70)
-
+over_font = pygame.font.Font('/Users/akshatsinghal/Downloads/pygamestut/Margarine-Regular.ttf', 70)
+over_font1 = pygame.font.Font('/Users/akshatsinghal/Downloads/pygamestut/Margarine-Regular.ttf', 30)
 
 def show_score(x, y):
     score = font.render("Score :" + str(score_value), True, (255, 255, 255))
@@ -76,6 +76,18 @@ def show_score(x, y):
 def game_over_text():
     over_text = over_font.render("GAME OVER", True, (255, 255, 255))
     screen.blit(over_text, (200, 250))
+    over_text1 = over_font1.render("Made By :", True, (255, 255, 255))
+    screen.blit(over_text1, (0, 400))
+    over_text2 = over_font1.render("Akshat Singhal", True, (255, 255, 255))
+    screen.blit(over_text2, (0, 430))
+    over_text3 = over_font1.render("Parth Bangde", True, (255, 255, 255))
+    screen.blit(over_text3, (0, 460))
+    over_text4 = over_font1.render("Yash Nandankar", True, (255, 255, 255))
+    screen.blit(over_text4, (0, 490))
+    over_text5 = over_font1.render("Aryan Kumar Prasad", True, (255, 255, 255))
+    screen.blit(over_text5, (0, 520))
+    over_text6 = over_font1.render("Priti Chaudhari", True, (255, 255, 255))
+    screen.blit(over_text6, (0, 550))
 
 
 def fire_bullet(x, y):
@@ -115,6 +127,10 @@ while running:
                 playerx_change = -1
             if event.key == pygame.K_RIGHT:
                 playerx_change = 1
+            if event.key == pygame.K_UP:
+                playery_change = -1
+            if event.key == pygame.K_DOWN:
+                playery_change = 1
             if event.key == pygame.K_SPACE:
                 if bullet_state == "ready":
                     # gets the current x cord of player
@@ -123,7 +139,10 @@ while running:
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerx_change = 0
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                playery_change = 0
     playerx += playerx_change
+    playery += playery_change
 
     # boundry of movement of the player
     if playerx <= 0:
@@ -138,6 +157,16 @@ while running:
         if alieny[i] > 440:
             for j in range(no_of_aliens):
                 alieny[j] = 2000
+            playery = 2000
+            game_over_text()
+            break
+            
+        collision = isCollision(alienx[i], alieny[i], playerx, playery)
+        if collision:
+            for j in range(no_of_aliens):
+                alieny[j] = 2000
+            playery = 2000
+            bossy = 2000
             game_over_text()
             break
 
